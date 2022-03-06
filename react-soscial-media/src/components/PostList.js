@@ -1,8 +1,10 @@
 import React from "react";
+import Post from './Post';
 
 
-function PostList() {
-    return <div>post list</div>
+function PostList({ posts }) {
+    return posts.map((post, i) => (<Post key={i} {...post} />)); //spread an obj to component
 }
+
 
 export default PostList;

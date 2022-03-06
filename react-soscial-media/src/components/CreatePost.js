@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function CreatePost({ user, setPosts, posts }) {
+function CreatePost({ user, handleAddPost }) {
     const [content, setContent] = React.useState('');
     const [image, setImage] = React.useState(null);
     const imageInputRef = React.useRef();
@@ -9,8 +9,9 @@ function CreatePost({ user, setPosts, posts }) {
     function handleSubmit(event) {
         event.preventDefault();
         const post = {content, image, user};
-        const newPosts = [post, ...posts]; //prepend to posts-> newPosts
-        setPosts(newPosts);
+        handleAddPost(post);
+        // const newPosts = [post, ...posts]; //prepend to posts-> newPosts
+        // setPosts(newPosts); // or setPosts(prevPosts => ([post, ...prevPosts]));
         setContent('');
         imageInputRef.current.value = '';
 
